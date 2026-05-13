@@ -1,0 +1,8 @@
+This documentation is published under CC BY 4.0
+(Creative Commons Attribution 4.0 International).
+
+Rudder itself (the software documented here) is licensed under
+GPLv3 for the server and Apache 2.0 for the agent. See https://www.rudder.io/
+
+The included shell and PowerShell scripts (if any) are MIT-licensed unless
+noted otherwise in the file header.
