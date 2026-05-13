@@ -9,7 +9,7 @@
 > Sync script: `sync-rudder-public.sh` (in kzff-utils-scripts on the
 > private Gitea, scheduled via cron).
 >
-> Source commit: 27bab78
+> Source commit: 8ffa751
 
 # install-rudder-9
 
