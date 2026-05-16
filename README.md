@@ -9,7 +9,7 @@
 > Sync script: `sync-rudder-public.sh` (in kzff-utils-scripts on the
 > private Gitea, scheduled via cron).
 >
-> Source commit: 8ffa751
+> Source commit: e3965df
 
 # install-rudder-9
 
@@ -139,6 +139,7 @@ Ports a ouvrir entre agents et serveur :
 - [Installation du serveur sur Debian/Ubuntu](docs/install-server-debian.md)
 - [Installation de l'agent sur Debian/Ubuntu](docs/install-agent-debian.md)
 - [Installation de l'agent sur RHEL/Rocky/AlmaLinux](docs/install-agent-rhel.md)
+- [Installation de l'agent sur Windows (pieges parc <admin>)](docs/install-agent-windows.md)
 - [Plan de migration OCS Inventory NG vers Rudder](docs/migration-ocs-rudder.md)
 - [Architecture et flux reseau](docs/architecture.md)
 
