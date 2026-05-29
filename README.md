@@ -9,7 +9,7 @@
 > Sync script: `sync-rudder-public.sh` (in kzff-utils-scripts on the
 > private Gitea, scheduled via cron).
 >
-> Source commit: e3965df
+> Source commit: 1cb8fc4
 
 # install-rudder-9
 
@@ -24,6 +24,7 @@ Documentation d'installation, d'exploitation et de migration vers Rudder 9.0
 - [Architecture cible homelab](#architecture-cible-homelab)
 - [Documentation detaillee](#documentation-detaillee)
 - [Sources officielles](#sources-officielles)
+- [Retour en Community apres essai Enterprise](#retour-en-community-apres-essai-enterprise)
 
 ## AVERTISSEMENT LICENCE
 
@@ -142,6 +143,16 @@ Ports a ouvrir entre agents et serveur :
 - [Installation de l'agent sur Windows (pieges parc <admin>)](docs/install-agent-windows.md)
 - [Plan de migration OCS Inventory NG vers Rudder](docs/migration-ocs-rudder.md)
 - [Architecture et flux reseau](docs/architecture.md)
+
+## Retour en Community apres essai Enterprise
+
+Procedure realisee le 2026-05-29 a la fin de la periode d'essai Enterprise
+(licence PPFNetworKPPF, 2026-05-13 au 2026-06-13). Suppression des 8 plugins
+Enterprise sur <rudder-host>, retour a l'etat Community pur.
+
+Details complets : [docs/rollback-to-community.md](docs/rollback-to-community.md)
+
+Script automatise : [scripts/rollback-to-community.sh](scripts/rollback-to-community.sh)
 
 ## Sources officielles
 
