@@ -6,9 +6,9 @@ d'essai Enterprise (licence PPFNetworKPPF, 2026-05-13 au 2026-06-13).
 ## Contexte
 
 L'essai Enterprise avait ete active pour tester le patch management,
-le vulnerability management et les benchmarks CIS. Aucun agent Windows
-n'avait ete integre (cf. contrainte licence agent Windows Enterprise-only
-documentee dans le README). Seuls 5 agents Linux restaient actifs.
+le vulnerability management et les benchmarks CIS. <windows-node> et <windows-host>
+(Windows 11 Pro) avaient ete integres comme noeuds DSC pendant l'essai.
+Seuls 5 agents Linux restaient actifs au moment du rollback.
 
 A la fin de la periode d'essai, retour en Community pour continuer le
 suivi du parc homelab sans souscription payante.
@@ -65,8 +65,35 @@ standard il echoue sur la creation du log dans `/var/log/rudder/rudder-pkg/`.
   pour 9.0.6.
 - Pas de migration de base PostgreSQL : aucune donnee Enterprise specifique
   (campagnes patch, scores CIS) n'avait ete generee.
-- Pas de desinstallation d'agents Windows : <windows-node> et <windows-host> n'avaient pas
-  ete integres (bloquant agent Windows = Enterprise-only).
+
+## Nettoyage noeuds Windows (2026-05-30)
+
+La suppression du plugin DSC a eu pour effet immediat de bloquer la
+generation des politiques pour les noeuds <windows-node> et <windows-host> (agents DSC
+Windows 11 Pro enregistres pendant l'essai Enterprise). Le serveur
+generait une erreur bloquante a chaque mise a jour de politiques.
+
+Actions realisees le 2026-05-30 :
+
+1. Suppression des noeuds via l'API Rudder (<rudder-host>:<SSH_PORT>) :
+
+       curl -X DELETE https://<rudder-host>:<SSH_PORT>/rudder/api/latest/nodes/548131b0-8d46-4c31-8923-b1bfa47e5c66 \
+         -H "X-API-Token: <token>"
+       curl -X DELETE https://<rudder-host>:<SSH_PORT>/rudder/api/latest/nodes/d1e79a14-2756-4905-b220-756180c6539f \
+         -H "X-API-Token: <token>"
+
+2. SSH sur <windows-node> et <windows-host> (port <SSH_PORT>, utilisateur <admin>/PowerShell) :
+   Desinstallation de l'agent DSC 9.0.6 via MSI :
+
+       msiexec /x {4B55EA5E-...} /quiet
+
+3. Suppression du dossier residuel `C:\Program Files\Rudder`.
+
+Etat final : parc Rudder = 6 noeuds Linux uniquement (<rudder-host>, <node>,
+<node>, <node>, debian, <node>). Plus aucune erreur DSC.
+
+Pour reinstaller un noeud Windows si retour Enterprise : voir
+`docs/install-agent-windows.md`.
 
 ## Script automatise disponible
 

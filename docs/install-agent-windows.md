@@ -1,7 +1,30 @@
 # Installation de l'agent Rudder 9.0 sur Windows
 
-Cible : <windows-node> et <windows-host> (Windows 11 Pro 24H2/25H2) une fois la base Linux
-stabilisee. La documentation editeur officielle est :
+## AVERTISSEMENT - Edition Enterprise uniquement
+
+Le plugin DSC (Desired State Configuration), requis pour generer les
+politiques Rudder sur les noeuds Windows, n'est disponible qu'en
+edition Enterprise.
+
+En edition Community (etat actuel du parc depuis 2026-05-29), le
+serveur ne peut pas generer de politiques pour les agents DSC Windows.
+Toute tentative d'enregistrement ou de mise a jour des politiques
+provoque une erreur bloquante sur le serveur pour tous les noeuds DSC.
+
+**Etat au 2026-05-30 : <windows-node> et <windows-host> ont ete suppresses du parc
+Rudder et les agents desinstalles. Le parc est exclusivement Linux
+(6 noeuds : <rudder-host>, <node>, <node>, <node>, debian, <node>).**
+
+Pour reinstaller en cas de retour Enterprise :
+- Souscrire et reinstaller le plugin rudder-plugin-dsc
+- Suivre la procedure d'installation ci-dessous
+- Appliquer le fix hdparm/CFA (section Pieges connus ci-dessous)
+- Reenregistrer le noeud via l'agent (il obtient un nouvel UUID)
+
+---
+
+Cible : <windows-node> et <windows-host> (Windows 11 Pro 24H2/25H2). La documentation
+editeur officielle est :
 https://docs.rudder.io/reference/9.0/installation/agent/windows.html
 
 Cette page consigne **les pieges specifiques au parc <admin>** qui ne

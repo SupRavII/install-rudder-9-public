@@ -9,7 +9,7 @@
 > Sync script: `sync-rudder-public.sh` (in kzff-utils-scripts on the
 > private Gitea, scheduled via cron).
 >
-> Source commit: 1cb8fc4
+> Source commit: ccca530
 
 # install-rudder-9
 
@@ -125,8 +125,10 @@ WAN. Au stade actuel, un seul serveur central suffit pour les machines
 @home + datacenter via Tailscale.
 
 Agents : tous les noeuds Linux du parc (<node>, <node>, <node>, <node>,
-<dns-master>, <frontend>, satellites Icinga2) puis <windows-node> et <windows-host> en Windows une fois
-la base Linux stabilisee.
+<dns-master>, <frontend>, satellites Icinga2). <windows-node> et <windows-host> (Windows 11 Pro) sont
+exclus en edition Community : le plugin DSC requis pour les noeuds
+Windows n'est disponible qu'en Enterprise. Depuis 2026-05-30, le parc
+Rudder est exclusivement Linux (6 noeuds).
 
 Ports a ouvrir entre agents et serveur :
 
@@ -141,6 +143,7 @@ Ports a ouvrir entre agents et serveur :
 - [Installation de l'agent sur Debian/Ubuntu](docs/install-agent-debian.md)
 - [Installation de l'agent sur RHEL/Rocky/AlmaLinux](docs/install-agent-rhel.md)
 - [Installation de l'agent sur Windows (pieges parc <admin>)](docs/install-agent-windows.md)
+  *(Enterprise uniquement - non applicable en Community)*
 - [Plan de migration OCS Inventory NG vers Rudder](docs/migration-ocs-rudder.md)
 - [Architecture et flux reseau](docs/architecture.md)
 
